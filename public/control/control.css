@@ -1,0 +1,61 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 16px; max-width: 900px; margin-inline: auto; font: 16px/1.45 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #0b1220; color: #e8eefc; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+h1 { font-size: 22px; margin: 0; }
+h2 { font-size: 16px; margin: 0 0 10px; color: #9fc3ee; text-transform: uppercase; letter-spacing: .5px; }
+section { background: #121c31; border-radius: 12px; padding: 14px 16px; margin: 14px 0; }
+.pill { padding: 4px 12px; border-radius: 999px; font-size: 14px; }
+.pill.ok { background: #14783a; } .pill.bad { background: #8a1d1d; } .pill.warn { background: #7a5a10; }
+.banner { background: #7a5a10; color: #fff; padding: 12px 16px; border-radius: 10px; margin: 12px 0; font-weight: 600; }
+.msg { padding: 10px 14px; border-radius: 10px; margin: 10px 0; background: #3a2a10; }
+.msg.err { background: #4a1818; } .msg.ok { background: #124a26; }
+.grid { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; }
+.grid dt { color: #9fc3ee; } .grid dd { margin: 0; word-break: break-word; }
+.alerts .a { padding: 8px 12px; border-radius: 8px; margin: 6px 0; background: #1d2a46; }
+.alerts .a.critical { background: #5a1b1b; } .alerts .a.warn { background: #5a4310; }
+.alerts .none { color: #7fe3a0; }
+button { font: inherit; padding: 9px 16px; border-radius: 10px; border: 0; background: #2f6fd0; color: #fff; cursor: pointer; margin: 6px 8px 6px 0; }
+button:hover { filter: brightness(1.12); }
+.danger-btn { background: #a32a2a; }
+input { font: inherit; padding: 9px 12px; border-radius: 10px; border: 1px solid #36507e; background: #0b1426; color: #fff; min-width: 240px; margin-right: 8px; }
+table { width: 100%; border-collapse: collapse; } td, th { padding: 6px 8px; text-align: left; border-bottom: 1px solid #22304d; font-size: 14px; }
+.code { font: 20px/1.4 ui-monospace, Menlo, Consolas, monospace; background: #0b1426; padding: 10px 14px; border-radius: 10px; margin-top: 8px; word-break: break-all; }
+.small { font-size: 13px; color: #9fb4d8; } code { background: #0b1426; padding: 2px 6px; border-radius: 6px; }
+/* ── Control đầy đủ (gameplay) ── */
+header .pill { margin-left: auto; } header #conn { margin-left: 8px; }
+#tabs { display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 0; background: #0b1220; padding: 8px 0; z-index: 5; }
+#tabs button { margin: 0; background: #1d2a46; } #tabs button.on { background: #2f6fd0; }
+.tab[hidden] { display: none; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+.row button, .row input, .row select { margin: 0; }
+select { font: inherit; padding: 9px 10px; border-radius: 10px; border: 1px solid #36507e; background: #0b1426; color: #fff; }
+input.num { min-width: 0; width: 84px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 14px; margin: 8px 0; }
+.grid2 label { display: flex; flex-direction: column; font-size: 13px; color: #9fc3ee; gap: 4px; }
+.grid2 input, .grid2 select { min-width: 0; width: 100%; margin: 0; }
+.preview-wrap { width: 270px; height: 480px; overflow: hidden; border-radius: 12px; background: #000; }
+#preview, #preview2 { width: 1080px; height: 1920px; border: 0; transform: scale(.25); transform-origin: 0 0; }
+.rule { border: 1px solid #26385c; border-radius: 10px; padding: 10px; margin: 10px 0; background: #0f182b; }
+.rule .row input[type=text] { min-width: 120px; }
+.act { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0; padding: 6px; border-radius: 8px; background: #16223b; }
+.act input { width: 90px; min-width: 0; margin: 0; } .act select { margin: 0; }
+.mini { padding: 4px 10px; margin: 0; font-size: 13px; }
+pre#logs { max-height: 420px; overflow: auto; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; background: #0b1426; padding: 10px; border-radius: 10px; white-space: pre-wrap; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; background: #1d2a46; margin-right: 4px; }
+.tag.ok { background: #14783a; } .tag.bad { background: #8a1d1d; } .tag.warn { background: #7a5a10; }
+.clickable { cursor: pointer; } .clickable:hover { background: #18284a; }
+input[type=checkbox] { min-width: 0; width: auto; margin: 0 4px 0 0; }
+input[type=range] { min-width: 0; padding: 0; }
+.rule .row label { display: inline-flex; align-items: center; font-size: 14px; }
+
+/* Màn hình phát: bố cục + nhạc */
+.screen-grid { display: grid; grid-template-columns: 290px 1fr; gap: 16px; align-items: start; }
+@media (max-width: 760px) { .screen-grid { grid-template-columns: 1fr; } }
+.lay-row { border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 8px 10px; margin: 8px 0; }
+.lay-head { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 4px; }
+.lay-head b { min-width: 170px; }
+.lay-slider { display: grid; grid-template-columns: 60px 1fr 52px; gap: 8px; align-items: center; font-size: 13px; }
+.lay-slider input { width: 100%; }
+.hint { font-size: 13px; opacity: .8; } .hint.warn { color: #ffcf6b; opacity: 1; }
+.tracks { max-height: 180px; overflow: auto; font-size: 13px; }

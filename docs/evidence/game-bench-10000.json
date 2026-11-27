@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-25T03:04:36.111Z",
+  "node": "v26.13.0",
+  "platform": "darwin/arm64",
+  "players": 10000,
+  "seconds": 90,
+  "giftsPerSec": 50,
+  "joinMs": 311,
+  "tickMs": {
+    "p50": 2.37,
+    "p95": 7.17,
+    "max": 10.98
+  },
+  "eventLoopDelayMs": {
+    "p50": 11.03,
+    "p95": 11.66,
+    "p99": 15.95,
+    "max": 40.08
+  },
+  "catchesPerMin": 28928,
+  "catches": 43425,
+  "giftsApplied": 4470,
+  "bosses": 0,
+  "leaderboardRefreshMs": {
+    "p50": 36,
+    "p95": 52,
+    "max": 56
+  },
+  "stageFrameBytes": {
+    "p50": 1957,
+    "max": 2240
+  },
+  "invariants": {
+    "ledgerEqLbAll": true,
+    "ledgerEqPlayers": true,
+    "catchesEq": true,
+    "giftDup": 0,
+    "giftPending": 0
+  },
+  "feed": {
+    "join": 10000,
+    "gift": 4470,
+    "event_queued": 4,
+    "event_start": 3,
+    "levelup": 17410,
+    "event_merged": 2252,
+    "escape": 2404,
+    "catch": 43425,
+    "achievement": 30855,
+    "boss_warning": 1,
+    "boss_start": 1,
+    "boss_hit": 5349
+  },
+  "worldCounters": {
+    "catches": 43425,
+    "escapes": 2404,
+    "bossHits": 5349,
+    "joins": 10000,
+    "commands": 14450,
+    "giftsApplied": 4460,
+    "flushes": 180,
+    "flushErrors": 0,
+    "opsQueued": 92916,
+    "loads": 10000,
+    "evicted": 0,
+    "tickMsMax": 10.98
+  },
+  "samples": [
+    {
+      "t": 5312,
+      "heapMb": 23,
+      "rssMb": 116,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 0
+    },
+    {
+      "t": 10312,
+      "heapMb": 22,
+      "rssMb": 117,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 103
+    },
+    {
+      "t": 15312,
+      "heapMb": 41,
+      "rssMb": 127,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 5748
+    },
+    {
+      "t": 20313,
+      "heapMb": 40,
+      "rssMb": 128,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 9475
+    },
+    {
+      "t": 25314,
+      "heapMb": 29,
+      "rssMb": 125,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 9948
+    },
+    {
+      "t": 30314,
+      "heapMb": 48,
+      "rssMb": 127,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 13593
+    },
+    {
+      "t": 35313,
+      "heapMb": 29,
+      "rssMb": 126,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 18074
+    },
+    {
+      "t": 40314,
+      "heapMb": 45,
+      "rssMb": 125,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 19372
+    },
+    {
+      "t": 45313,
+      "heapMb": 20,
+      "rssMb": 127,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 22054
+    },
+    {
+      "t": 50314,
+      "heapMb": 30,
+      "rssMb": 130,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 26266
+    },
+    {
+      "t": 55315,
+      "heapMb": 23,
+      "rssMb": 133,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 28634
+    },
+    {
+      "t": 60315,
+      "heapMb": 50,
+      "rssMb": 133,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 30856
+    },
+    {
+      "t": 65314,
+      "heapMb": 37,
+      "rssMb": 135,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 34596
+    },
+    {
+      "t": 70314,
+      "heapMb": 36,
+      "rssMb": 137,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 37546
+    },
+    {
+      "t": 75314,
+      "heapMb": 39,
+      "rssMb": 136,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 34230
+    },
+    {
+      "t": 80315,
+      "heapMb": 37,
+      "rssMb": 136,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 31700
+    },
+    {
+      "t": 85315,
+      "heapMb": 33,
+      "rssMb": 138,
+      "unackedMs": 0,
+      "writeOps": 0,
+      "active": 10000,
+      "fpm": 32589
+    }
+  ],
+  "dbMb": 33.7
+}

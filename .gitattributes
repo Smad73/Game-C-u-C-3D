@@ -1,0 +1,15 @@
+# Chuẩn hoá xuống dòng — launcher hỏng nếu sai (ARCHITECTURE §3, check-portability.js)
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.command text eol=lf
+*.sh text eol=lf
+*.sql text eol=lf
+# Tệp nhị phân
+*.png binary
+*.jpg binary
+*.glb binary
+*.woff2 binary
+*.zip binary
+*.db binary
+*.vrm binary

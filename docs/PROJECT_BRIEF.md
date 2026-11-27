@@ -1,0 +1,39 @@
+# PROJECT BRIEF
+- Tên dự án / loại: **NOVA FISHING LIVE 3D** — game (tương tác TikTok LIVE)
+- Phiên bản mục tiêu: 1.0.0 (bản phát hành đầu tiên sau 8 Phase); tài liệu hiện tại 0.0.9
+- Mục tiêu & lý do: game câu cá 3D chạy liên tục suốt buổi livestream TikTok, giúp tăng tương tác (comment, like, quà) và giữ người xem quay lại nhờ tiến trình lâu dài; bán cho các streamer như các game LIVE trước của người dùng.
+- **Phạm vi V1 (người dùng chốt, ADR-0015): vận hành và phát TikTok LIVE trên macOS và Windows ngay từ bản đầu.** Một codebase dùng chung gameplay, backend, DB, TikTok connector, hệ thống quà. Phát qua **OBS Browser Source trên cả hai OS**; **TikTok LIVE Studio kiểm tương thích thực tế riêng từng OS**. Hỗ trợ WebGL2, âm thanh, WebSocket, dọc 1080×1920. Cấu hình và hướng dẫn cài đặt riêng cho macOS và Windows. Trang Control mở bằng trình duyệt máy phát/điện thoại qua LAN.
+  - **Thứ tự nghiệm thu (0.0.7):** hiện chỉ có máy Mac → macOS phát triển và nghiệm thu trước; code/dependency tương thích **Windows x64** từ đầu; Windows CI nếu khả thi; kiểm thử thực tế Windows/OBS/LIVE Studio trên Windows ở giai đoạn **Windows Validation** khi có máy. **Windows = nền tảng mục tiêu, CHƯA NGHIỆM THU**. Thiếu máy Windows không chặn Phase 1/2.
+- Người dùng cuối: (1) streamer TikTok vận hành game trên Mac qua TikTok LIVE Studio, điều khiển bằng điện thoại; (2) người xem TikTok tham gia bằng comment/quà.
+- Chức năng bắt buộc:
+  - **Continuous Live World** (ChatGPT chốt phương án B): game chạy liên tục suốt buổi LIVE, không có phiên chơi 10 phút, không reset điểm cá nhân theo thời gian.
+  - Tham gia bất cứ lúc nào bằng comment `câu` / `câu cá`; **không giới hạn cứng số cần thủ**; mỗi người có hồ sơ riêng.
+  - Tự động câu: quăng → chờ → cá cắn → giật → kéo lên / sổng; loài cá, kg, độ hiếm do server quyết định.
+  - AFK: 5 phút không có tương tác hợp lệ → tạm dừng tự quăng; không xoá khỏi game; giữ hồ sơ, điểm, cấp, trang bị, thành tích. Comment lệnh hợp lệ hoặc gửi quà → tự đánh thức. Like đơn lẻ không đánh thức (chống spam).
+  - Rời đi → lưu hồ sơ, điểm, thành tích; quay lại → khôi phục.
+  - Boss chạy liên tục: mặc định 30 phút/lần (cấu hình trong Admin), Boss đặc biệt triệu hồi bằng quà hợp lệ, có cảnh báo trước khi xuất hiện, không chồng chéo ngoài cấu hình, tự điều chỉnh theo lượng người chơi và trạng thái server.
+  - BXH: TOP LIVE (reset khi bắt đầu buổi LIVE mới), TOP giờ (60 phút gần nhất), TOP ngày (ngày Việt Nam), TOP tuần (thứ Hai–Chủ nhật, giờ Việt Nam), TOP tổng (tích luỹ). Xếp theo điểm; bằng điểm thì tổng trọng lượng cá cao hơn xếp trên. TOP 10/50/100 luân phiên trên màn LIVE; Control xem đầy đủ và phân trang. **Chỉ TOP LIVE được reset**; BXH dài hạn lưu độc lập, không reset khi kết thúc LIVE.
+  - Buổi LIVE xác định bằng sự kiện bắt đầu/kết thúc thực tế; mất kết nối tạm thời không tạo buổi mới; có phục hồi khi connector khởi động lại.
+  - Múi giờ Asia/Ho_Chi_Minh (UTC+7); timestamp lưu UTC trong DB, quy đổi khi hiển thị.
+  - Lưu lâu dài: sổ tay cá, cấp độ, trang bị, thành tích.
+  - Kết thúc LIVE: lưu trạng thái và kết quả trước khi đóng game; không reset hồ sơ hoặc tiến trình người chơi; thế giới không giới hạn thời gian hoạt động.
+  - Quà/like/follow/share → hiệu ứng gameplay, bảng Quà → Hành động cấu hình được (nhiều quà/hành động, bật/tắt hiển thị).
+  - Đồ hoạ 3D Three.js, khung dọc 1080×1920 cho TikTok LIVE Studio; chữ tiếng Việt.
+  - Trang Control trên điện thoại (xem trước, kết nối, gán quà, BXH, cài đặt, cập nhật bản); chế độ Demo/Mock để thử không cần LIVE. Truy cập Control qua LAN: mục tiêu **HTTPS** (chứng chỉ tự ký từng máy, ADR-0023); nếu V1 chưa có HTTPS thì đây là **giới hạn bảo mật quan trọng**, chỉ khuyến nghị dùng trên mạng tin cậy. Ghép đôi thiết bị có hạn, một lần, thu hồi được; thu hồi được toàn bộ phiên/thiết bị.
+  - Xử lý hàng nghìn comment/quà: chống trùng, giới hạn tốc độ, hàng đợi ưu tiên, backpressure; quà được ghi bền trước khi áp dụng và **không áp dụng hai lần**; hiệu ứng quà chỉ có hiệu lực trong game sau khi đã ghi bền; quà đã ghi bền không bị bỏ sót sau crash. Không chủ động bỏ quà khi còn khả năng lưu trữ; khi mọi nơi lưu trữ đều thất bại thì ngừng tiếp nhận có kiểm soát và cảnh báo rõ nguy cơ mất. Không tuyên bố exactly-once: quà chưa kịp ghi bền khi tiến trình chết/mất điện có thể mất (ADR-0018, ADR-0019, ADR-0022).
+- Chức năng mong muốn (sau): TTS đọc tên/quà; nhiều bản đồ/skin; khung ngang 16:9; mở rộng ngang nhiều tiến trình/máy. Mở rộng nền tảng ngoài macOS + Windows chỉ khi người dùng đổi phạm vi (ADR mới).
+- Ngoài phạm vi V1: Linux, Android, iOS, ứng dụng native riêng (Electron/Tauri/Swift/WinUI…), web game công khai; quy đổi điểm/vật phẩm ra tiền thật; cờ bạc; tài khoản đăng nhập riêng cho người xem; API TikTok chính thức (không có cho loại game này).
+- Ràng buộc: máy dev Apple M1, RAM 8 GB, macOS 26; máy phát của người dùng cuối là macOS hoặc Windows (cấu hình tối thiểu sẽ công bố); một codebase; không đường dẫn tuyệt đối máy Mac, không lệnh/thư viện chỉ chạy trên macOS trong build chung, không phụ thuộc native; Node.js ≥ 22.13 LTS (`node:sqlite`); Three.js; model CC0 low-poly có ghi nguồn; thư viện `tiktok-live-connector` không chính thức; không đưa khoá bí mật vào bản bán.
+- **Tiêu chí nghiệm thu V1 (người dùng chốt, có bằng chứng thực tế, ghi PLATFORM_COMPATIBILITY_MATRIX):** (1) game khởi chạy trên macOS; (2) game khởi chạy trên Windows; (3) OBS lấy được hình ảnh game trên cả hai; (4) âm thanh hoạt động; (5) comment và quà TikTok được xử lý; (6) không có lỗi phụ thuộc hệ điều hành; (7) có hướng dẫn cài đặt và vận hành cho cả hai OS. TikTok LIVE Studio: kết quả kiểm từng OS được ghi rõ (không mặc định). Phần Windows của các tiêu chí (2, 3, 4–6, 7) chốt ở giai đoạn Windows Validation; V1 chỉ được tuyên bố "đạt trên Windows" sau giai đoạn đó.
+- Tiêu chí hoàn thành bổ sung (đo được, trên từng máy kiểm thử):
+  - 30 FPS ở 1080×1920 trên M1 8 GB kèm phần mềm phát (máy Windows: đo ở Windows Validation), với 1.000 và 10.000 người trong thế giới (preset Vừa).
+  - Tải 1.000 comment/s + 200 quà/s trong 10 phút: 0 quà áp dụng hai lần; mọi quà đã ghi `RECEIVED` kết thúc APPLIED/REJECTED/DEAD; báo cáo số quà nhận từ connector so với số đã ghi bền; độ trễ quà p95 < 1 s.
+  - Tick server p95 < 20 ms ở 10.000 người hoạt động.
+  - Chạy liên tục 3 giờ (soak test) không rò bộ nhớ, không lỗi console.
+  - Kết thúc LIVE / tắt an toàn (nút Control, Ctrl+C) hoàn tất trong trần thời gian: 100% điểm, cá, thành tích đã được Worker ack trước khi thoát (kiểm bằng test khôi phục). Tắt đột ngột/crash: mất tối đa theo RPO **đo được bằng crash test** ở ADR-0022 (CR1–CR10), ghi TEST_REPORT; không cam kết 0; chỉ số cảnh báo không phải cam kết độ bền.
+  - BXH 5 phạm vi (gồm cửa sổ trượt 60 phút, tiêu chí phụ tổng kg và thời điểm đạt kết quả `reached_at`) đúng **về toàn bộ thứ tự** khi so với tính lại từ dữ liệu gốc; chuyển ngày/tuần đúng giờ Việt Nam.
+  - Like không đánh thức AFK; comment lệnh/quà đánh thức (test tự động).
+  - Mất kết nối / khởi động lại connector không tạo buổi LIVE mới (test tự động + kiểm chứng trên LIVE thật).
+- Rủi ro đã biết: xem ARCHITECTURE §10 (thư viện TikTok không chính thức; RAM 8 GB; lũ sự kiện; hỗ trợ WebGL2 của LIVE Studio; bản quyền model/âm thanh; chính sách TikTok).
+- Điểm chưa rõ cần hỏi: xem PROJECT_STATUS mục "Chặn".
+- Người duyệt: ChatGPT (Architect & Reviewer) — Người dùng quyết định cuối

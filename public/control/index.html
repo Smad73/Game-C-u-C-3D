@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>NOVA FISHING LIVE 3D — Điều khiển</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="control.css">
+</head>
+<body>
+  <header>
+    <h1>🎣 NOVA FISHING LIVE 3D</h1>
+    <span id="realm" class="pill"></span>
+    <span id="conn" class="pill bad">chưa kết nối</span>
+  </header>
+
+  <div id="lan-banner" class="banner" hidden>
+    ⚠ KẾT NỐI KHÔNG MÃ HOÁ (HTTP). Mật khẩu và phiên có thể bị nghe lén trên mạng này. Chỉ dùng trên mạng tin cậy (mạng nhà riêng).
+  </div>
+  <div id="msg" class="msg" hidden></div>
+
+  <!-- Chưa ghép đôi -->
+  <section id="unpaired" hidden>
+    <h2>Chưa ghép đôi</h2>
+    <p>Trên máy đang chạy game, trang này tự vào thẳng. <b>Điện thoại / máy khác</b> cần mã ghép đôi:
+       tại cửa sổ khởi chạy gõ <b>p</b> rồi Enter, rồi dán mã vào đây (mã hết hạn sau 2 phút, dùng một lần).</p>
+    <form id="pair-form"><input id="pair-code" type="text" autocomplete="off" placeholder="Mã ghép đôi"><button type="submit">Ghép đôi</button></form>
+    <form id="login-form" hidden><input id="login-pass" type="password" autocomplete="current-password" placeholder="Mật khẩu Admin"><button type="submit">Đăng nhập</button></form>
+  </section>
+
+  <!-- Đã ghép đôi -->
+  <main id="paired" hidden>
+    <nav id="tabs">
+      <button type="button" data-tab="overview" class="on">Tổng quan</button>
+      <button type="button" data-tab="live">LIVE / Demo</button>
+      <button type="button" data-tab="screen">Màn hình phát</button>
+      <button type="button" data-tab="players">Người chơi</button>
+      <button type="button" data-tab="gifts">Quà</button>
+      <button type="button" data-tab="events">Sự kiện</button>
+      <button type="button" data-tab="lb">BXH</button>
+      <button type="button" data-tab="settings">Cài đặt</button>
+      <button type="button" data-tab="system">Hệ thống</button>
+    </nav>
+
+    <div class="tab" data-tab="overview">
+      <section><h2>Thế giới</h2><div id="world" class="grid"></div>
+        <button id="btn-pause" type="button">Tạm dừng thế giới</button><button id="btn-resume" type="button">Tiếp tục</button></section>
+      <section><h2>Xem trước màn hình phát</h2>
+        <div class="preview-wrap"><iframe id="preview" title="Xem trước stage" loading="lazy"></iframe></div>
+        <p class="small">Địa chỉ cho OBS / TikTok LIVE Studio (Browser Source 1080×1920): <code id="stage-url"></code></p>
+        <p class="small">Kiểm tra máy phát (WebGL2/FPS/âm thanh): <code id="check-url"></code></p></section>
+      <section><h2>Cảnh báo</h2><div id="alerts" class="alerts"></div></section>
+      <section><h2>Màn hình phát đang kết nối</h2><div id="stage" class="grid"></div></section>
+    </div>
+
+    <div class="tab" data-tab="live" hidden>
+      <section><h2>Kết nối hiện tại</h2><div id="live-now" class="grid"></div>
+        <button id="btn-connect" type="button">Kết nối</button><button id="btn-disconnect" type="button">Ngắt kết nối</button>
+        <button id="btn-endlive" type="button" class="danger-btn">Kết thúc buổi LIVE (lưu an toàn)</button></section>
+      <section><h2>Chế độ chạy</h2>
+        <p class="small">Demo dùng người xem giả lập và dữ liệu riêng (<code>nova-demo.db</code>), không bao giờ chạm dữ liệu LIVE. Đổi chế độ cần khởi động lại (game tự lưu an toàn).</p>
+        <form id="mode-form" class="row">
+          <select id="mode"><option value="demo">Demo (giả lập)</option><option value="live">LIVE TikTok</option><option value="off">Tắt nguồn sự kiện</option></select>
+          <input id="username" type="text" placeholder="@username TikTok" autocomplete="off">
+          <select id="provider"></select>
+          <button type="submit">Lưu chế độ</button>
+          <button id="btn-restart" type="button">Khởi động lại</button>
+        </form>
+        <div id="providers"></div></section>
+      <section id="demo-box"><h2>Demo — người xem giả lập</h2>
+        <div class="row"><button id="demo-join" type="button">+20 người vào câu</button><button id="demo-join200" type="button">+200 người</button><button id="demo-join2000" type="button">+2000 người</button></div>
+        <form id="demo-comment" class="row"><input id="dc-user" type="number" min="0" value="1" class="num" title="Mã người xem"><input id="dc-text" type="text" value="câu"><button type="submit">Gửi comment</button></form>
+        <form id="demo-gift" class="row"><input id="dg-user" type="number" min="0" value="1" class="num"><select id="dg-gift"></select><input id="dg-count" type="number" min="1" max="99" value="1" class="num"><input id="dg-diamond" type="number" min="0" value="1" class="num" title="Kim cương"><button type="submit">Gửi quà</button></form>
+        <div class="row" id="demo-speed">Nhịp nhanh: <button type="button" data-speed="slow">Chậm</button><button type="button" data-speed="normal">Vừa</button><button type="button" data-speed="fast">Nhanh</button></div>
+        <form id="demo-rates" class="grid2"></form></section>
+    </div>
+
+    <div class="tab" data-tab="players" hidden>
+      <section><h2>Tìm người chơi</h2>
+        <form id="p-search" class="row"><input id="p-q" type="text" placeholder="Tên / ID"><button type="submit">Tìm</button><span id="p-total" class="small"></span></form>
+        <div id="p-list"></div><div class="row"><button id="p-prev" type="button">‹ Trước</button><button id="p-next" type="button">Sau ›</button></div></section>
+      <section id="p-detail" hidden><h2>Hồ sơ</h2><div id="p-info"></div></section>
+    </div>
+
+    <div class="tab" data-tab="gifts" hidden>
+      <section><h2>Gán quà → hành động</h2>
+        <p class="small">Mỗi quà gán được nhiều hành động; hiệu ứng chỉ áp dụng SAU khi quà được ghi bền. Đổi luật không ảnh hưởng quà đã nhận.</p>
+        <div id="g-global" class="grid2"></div>
+        <div id="g-rules"></div>
+        <div class="row"><button id="g-add" type="button">+ Thêm quà</button><button id="g-save" type="button">Lưu luật quà</button><button id="g-reset" type="button" class="danger-btn">Về mặc định</button></div></section>
+      <section><h2>Tương tác khác</h2><div id="g-inter" class="grid2"></div></section>
+    </div>
+
+    <div class="tab" data-tab="events" hidden>
+      <section><h2>Kích hoạt</h2>
+        <div class="row" id="ev-buttons"></div>
+        <div class="row"><label>Cấp Boss <input id="ev-level" type="number" min="1" max="10" value="1" class="num"></label></div></section>
+      <section><h2>Đang chạy / chờ</h2><div id="ev-now"></div></section>
+      <section><h2>Gần đây</h2><div id="ev-recent"></div></section>
+    </div>
+
+    <div class="tab" data-tab="lb" hidden>
+      <section><h2>Bảng xếp hạng</h2>
+        <div class="row"><select id="lb-scope"><option value="live">TOP LIVE</option><option value="hour">TOP 60 phút</option><option value="day">TOP ngày</option><option value="week">TOP tuần</option><option value="all">TOP tổng</option></select>
+          <select id="lb-period"><option value="">Kỳ hiện tại</option></select><button id="lb-go" type="button">Xem</button><span id="lb-total" class="small"></span></div>
+        <div id="lb-table"></div><div class="row"><button id="lb-prev" type="button">‹ Trước</button><button id="lb-next" type="button">Sau ›</button></div></section>
+    </div>
+
+    <div class="tab" data-tab="screen" hidden>
+      <section class="screen-grid">
+        <div><h2>Xem trước</h2><div class="preview-wrap"><iframe id="preview2" title="Xem trước khi chỉnh bố cục"></iframe></div>
+          <p class="hint">Kéo thanh trượt → stage và khung này đổi ngay (tự lưu).</p></div>
+        <div><h2>Bố cục bảng trên màn hình phát</h2>
+          <div class="row"><button id="lay-reset-all" type="button">Mặc định tất cả</button><button id="lay-compact" type="button">Gọn (nhỏ, nép sát mép)</button></div>
+          <div id="lay-list"></div></div>
+      </section>
+      <section><h2>Nhạc nền</h2>
+        <div class="row" id="music-mode"></div>
+        <div class="row"><input id="yt-url" type="url" placeholder="Dán link YouTube (vd. https://www.youtube.com/watch?v=…)" style="flex:1"><button id="yt-apply" type="button">Dùng link này</button></div>
+        <p class="hint warn">⚠️ YouTube: khung phát phải hiện trên màn hình (điều khoản YouTube). Phần lớn nhạc YouTube có bản quyền → TikTok có thể tắt tiếng/dừng LIVE. Âm lượng YouTube chỉnh trong OBS/LIVE Studio.</p>
+        <div class="row"><button type="button" data-mcmd="prev">⏮</button><button type="button" data-mcmd="play">▶ Phát</button><button type="button" data-mcmd="pause">⏸ Dừng</button><button type="button" data-mcmd="next">⏭</button>
+          <label><input id="music-shuffle" type="checkbox"> Trộn bài</label>
+          <label>Âm lượng <input id="music-vol" type="range" min="0" max="1" step="0.05"></label></div>
+        <p class="hint">Tệp trên máy: chép nhạc (mp3, m4a, ogg, wav…) có quyền phát vào thư mục <code>public/stage/assets/music</code> của game, rồi bấm Làm mới. Gợi ý: nhạc miễn phí trong YouTube Studio → Thư viện âm thanh.</p>
+        <div class="row"><button id="music-refresh" type="button">Làm mới danh sách</button><span id="music-count"></span></div>
+        <ol id="music-tracks" class="tracks"></ol>
+      </section>
+    </div>
+
+    <div class="tab" data-tab="settings" hidden>
+      <section><h2>Cài đặt gameplay</h2><form id="cfg-form" class="grid2"></form><button id="cfg-save" type="button">Lưu cài đặt</button></section>
+    </div>
+
+    <div class="tab" data-tab="system" hidden>
+      <section><h2>Số đo</h2><div id="metrics" class="grid"></div><button id="btn-refresh" type="button">Làm mới</button></section>
+      <section><h2>Sao lưu dữ liệu</h2><button id="btn-backup" type="button">Sao lưu ngay</button><div id="backups"></div></section>
+      <section><h2>Nhật ký</h2><div class="row"><select id="log-level"><option value="info">info+</option><option value="warn">warn+</option><option value="error">error</option><option value="debug">tất cả</option></select><button id="log-go" type="button">Tải</button></div><pre id="logs"></pre></section>
+      <section><h2>Thiết bị đã ghép đôi</h2><div id="devices"></div>
+        <button id="btn-paircode" type="button">Tạo mã ghép đôi cho thiết bị khác</button>
+        <button id="btn-cancelcode" type="button">Huỷ mã đang hiển thị</button>
+        <div id="paircode-out" class="code" hidden></div></section>
+      <section class="danger"><h2>Thao tác nguy hiểm</h2>
+        <button id="btn-revokeall" type="button" class="danger-btn">Thu hồi TẤT CẢ thiết bị</button>
+        <button id="btn-safeexit" type="button" class="danger-btn">Thoát an toàn (lưu rồi tắt game)</button></section>
+    </div>
+  </main>
+  <script src="control.js" defer></script>
+</body>
+</html>

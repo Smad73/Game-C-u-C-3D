@@ -1,0 +1,12 @@
+{
+  "platform": {
+    "id": "darwin",
+    "label": "macOS"
+  },
+  "graphics": {
+    "defaultPreset": "medium"
+  },
+  "launcher": {
+    "openBrowserOnStart": true
+  }
+}

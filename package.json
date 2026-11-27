@@ -1,0 +1,30 @@
+{
+  "name": "nova-fishing-live-3d",
+  "version": "0.4.4",
+  "description": "NOVA FISHING LIVE 3D — game câu cá 3D tương tác TikTok LIVE (macOS + Windows x64). v0.4.0: camera 3 góc, nhân vật VRoid, cá mới, bản đồ 4 khu.",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/run-tests.js",
+    "test:unit": "node tests/run-tests.js --skip-portability",
+    "check:portability": "node tools/check-portability.js",
+    "vendor:three": "node tools/vendor-three.js",
+    "test:crash": "node tools/crash-suite.js",
+    "load": "node tools/load-generator.js",
+    "bench:game": "node tools/game-bench.js",
+    "vendor:vrm": "node tools/vendor-vrm.js",
+    "prepare:vrm": "node tools/prepare-vrm.js"
+  },
+  "dependencies": {
+    "@pixiv/three-vrm": "3.6.0",
+    "express": "4.22.3",
+    "three": "0.187.0",
+    "tiktok-live-connector": "2.5.0",
+    "ws": "8.23.0"
+  }
+}

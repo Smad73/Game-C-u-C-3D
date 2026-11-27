@@ -1,0 +1,114 @@
+{
+  "server": {
+    "port": 8787,
+    "mode": "local",
+    "lanHost": null
+  },
+  "timezone": "Asia/Ho_Chi_Minh",
+  "dataDir": null,
+  "logging": {
+    "level": "info",
+    "toFile": true,
+    "retainDays": 14
+  },
+  "shutdown": {
+    "deadlineMs": 10000,
+    "stepTimeoutMs": 4000
+  },
+  "persistence": {
+    "maxInFlightBatches": 2,
+    "ackTimeoutMs": 5000,
+    "maxRestarts": 5,
+    "restartBackoffMs": 250,
+    "maxRetryAttempts": 5,
+    "retryBackoffMs": 100,
+    "busyTimeoutMs": 5000,
+    "healthIntervalMs": 5000,
+    "writeBufferSoftMax": 50000,
+    "writeBufferHardMax": 200000,
+    "oldestUnpersistedWarnMs": 2000,
+    "oldestUnpersistedCritMs": 10000,
+    "oldestUnackedBatchWarnMs": 2000,
+    "oldestUnackedBatchCritMs": 10000
+  },
+  "overload": {
+    "evaluateIntervalMs": 1000,
+    "eventLoopP95WarnMs": 50,
+    "eventLoopP95CritMs": 200,
+    "heapUsedWarnMb": 1500,
+    "heapUsedCritMb": 3000,
+    "recoverAfterOkTicks": 5,
+    "disk": {
+      "warnFreeBytes": 2147483648,
+      "critFreeBytes": 524288000,
+      "safeFreeBytes": 104857600
+    },
+    "ingestEventsPerSec": 2000
+  },
+  "security": {
+    "pairCodeTtlMs": 120000,
+    "sessionIdleMs": 43200000,
+    "reauthWindowMs": 300000,
+    "loginMaxPerMinute": 5,
+    "restMaxPerMinute": 240,
+    "jsonBodyLimitBytes": 16384,
+    "wsMaxMessageBytes": 16384,
+    "wsMaxMessagesPerSec": 20,
+    "adminPasswordMinLength": 10
+  },
+  "ingest": {
+    "mode": "off",
+    "autoConnect": false,
+    "live": {
+      "username": null,
+      "provider": "tiktok-live-connector"
+    },
+    "reconnect": {
+      "maxAttempts": 5,
+      "baseDelayMs": 1000,
+      "maxDelayMs": 30000,
+      "jitter": 0.2
+    },
+    "pipeline": {
+      "drainPerTick": 2000,
+      "tickMs": 50,
+      "commentsPerUserPerSec": 5,
+      "commentBurst": 10
+    },
+    "queue": {
+      "criticalSoftMax": 5000,
+      "progressMax": 20000,
+      "stateMax": 50000,
+      "logMax": 10000
+    },
+    "journal": {
+      "groupCommitMs": 50,
+      "maxBatchGifts": 800,
+      "maxGiftAttempts": 5,
+      "retryFailedMs": 2000,
+      "emergency": {
+        "ramGiftsMax": 20000,
+        "haltRatio": 0.9,
+        "fsyncGroupMs": 50,
+        "s3RetryMs": 2000
+      }
+    },
+    "mock": {
+      "users": 200,
+      "commentsPerSec": 5,
+      "giftsPerSec": 1,
+      "likesPerSec": 10,
+      "followsPerSec": 0.2,
+      "sharesPerSec": 0.2,
+      "joinsPerSec": 1,
+      "seed": 1
+    }
+  },
+  "game": {
+    "tickMs": 100,
+    "flushMs": 500,
+    "stageFrameMs": 100,
+    "leaderboardRefreshMs": 3000,
+    "retentionDays": 7
+  }
+}

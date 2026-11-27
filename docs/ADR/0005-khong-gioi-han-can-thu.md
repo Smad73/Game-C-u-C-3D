@@ -1,0 +1,12 @@
+# ADR-0005: Số cần thủ không giới hạn; tách gameplay khỏi hiển thị
+- Ngày: 2026-11-24 — Sửa: 2026-11-24 (0.0.3, theo ADR-0009/0011; 0.0.4 theo quyết định AFK của ChatGPT; 0.0.8 theo R04: bảng giới hạn vận hành + bậc quá tải ở ADR-0019) — Trạng thái: Đề xuất (người dùng quyết định) — **Thay thế** giới hạn "16 ô cần thủ + hàng chờ + thu hồi ô" của ARCHITECTURE 0.0.1
+- Bối cảnh: Người dùng yêu cầu mọi người xem comment `câu`/`câu cá` đều có hồ sơ cần thủ, cùng tồn tại trong một buổi LIVE (thế giới liên tục, ADR-0009), không giới hạn cứng.
+- Quyết định:
+  1. Không có giới hạn số người chơi trong logic, DB, API, giao diện, tài liệu.
+  2. Hồ sơ cần thủ (players + session_anglers) độc lập với nhân vật 3D. Server giữ và cập nhật mọi người; client chỉ vẽ chi tiết người trong vùng camera/khu gameplay.
+  3. Bỏ "thu hồi ô". **AFK (ChatGPT chốt): 5 phút không có tương tác hợp lệ → tạm dừng tự quăng**; không xoá khỏi game; giữ hồ sơ, điểm, cấp, trang bị, thành tích. Tương tác hợp lệ = comment lệnh hợp lệ hoặc gửi quà; **like đơn lẻ không tính** (chống spam). Sau AFK lâu hơn (ngưỡng vận hành) → tầng COLD: hồ sơ chỉ nằm ở DB để giải phóng RAM, với người chơi vẫn là AFK; đánh thức → khôi phục đầy đủ (ADR-0011).
+  4. Chỉ được có **giới hạn vận hành cấu hình được** (tốc độ sự kiện, kích thước hàng đợi, ngân sách render, tần suất WS, cỡ lô DB, số hồ sơ giữ nóng trong RAM). Khi chạm ngưỡng: giảm chất lượng/gộp/trễ, không từ chối người tham gia, không bỏ quà.
+  5. Không thay 16 bằng bất kỳ con số cứng nào khác.
+- **0.0.8 (R04):** bảng giới hạn vận hành, bậc quá tải L0–L4/SAFE MODE và thứ tự xử lý khi quá tải (giảm render → gộp sự kiện → backpressure → chuyển hồ sơ lạnh → tạm dừng mô phỏng) nằm ở ADR-0019. Không bậc nào xoá người chơi, từ chối tham gia hay chủ động bỏ quà. **0.0.9 (R11):** "không chủ động bỏ quà" áp dụng khi hệ thống còn khả năng tiếp nhận và lưu trữ; khi mọi nơi lưu trữ đều thất bại thì ngừng tiếp nhận sự kiện có kiểm soát (S4, ADR-0019) — đây là bảo vệ hệ thống, không phải giới hạn người chơi. Không có giới hạn 16, 100, 1.000 hay bất kỳ giới hạn cứng nào trong gameplay.
+- Phương án đã loại: N ô cố định + hàng chờ (0.0.1); chỉ người có quà mới được chơi.
+- Hệ quả: cần FishingScheduler theo sự kiện (ADR-0002), BXH có thứ tự + phân trang, đường ống sự kiện (ADR-0006), render đám đông (ADR-0007), thiết kế sẵn mở rộng ngang (ADR-0008); năng lực thực tế trên M1 8 GB phải **đo và báo cáo**, không hứa trước.

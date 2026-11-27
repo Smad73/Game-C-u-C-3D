@@ -1,0 +1,1311 @@
+{
+  "tool": "tools/crash-suite.js",
+  "at": "2026-11-24T21:32:29.728Z",
+  "node": "v26.13.0",
+  "platform": "darwin/arm64",
+  "kinds": {
+    "CR1": "SIGKILL tiến trình thật (macOS)",
+    "CR2": "worker_threads terminate thật, tiến trình sống",
+    "CR8": "chèn lỗi ranh giới (mô phỏng logic) + terminate Worker"
+  },
+  "CR8": {
+    "runs": 16,
+    "allPass": true,
+    "runsDetail": [
+      {
+        "i": 1,
+        "at": {
+          "point": "GB0"
+        },
+        "crashed": true,
+        "replayed": 25,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 2,
+        "at": {
+          "point": "GB3"
+        },
+        "crashed": true,
+        "replayed": 26,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 3,
+        "at": {
+          "point": "GB6"
+        },
+        "crashed": true,
+        "replayed": 0,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 4,
+        "at": {
+          "point": "GB7"
+        },
+        "crashed": true,
+        "replayed": 31,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 5,
+        "at": {
+          "workerStage": "receive",
+          "workerFault": "before_commit"
+        },
+        "crashed": true,
+        "replayed": 0,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 6,
+        "at": {
+          "workerStage": "receive",
+          "workerFault": "after_commit_before_ack"
+        },
+        "crashed": true,
+        "replayed": 51,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 7,
+        "at": {
+          "workerStage": "apply",
+          "workerFault": "before_commit"
+        },
+        "crashed": true,
+        "replayed": 59,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 8,
+        "at": {
+          "workerStage": "apply",
+          "workerFault": "after_commit_before_ack"
+        },
+        "crashed": true,
+        "replayed": 27,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 9,
+        "at": {
+          "point": "GB0"
+        },
+        "crashed": true,
+        "replayed": 22,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 10,
+        "at": {
+          "point": "GB3"
+        },
+        "crashed": true,
+        "replayed": 31,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 11,
+        "at": {
+          "point": "GB6"
+        },
+        "crashed": true,
+        "replayed": 26,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 12,
+        "at": {
+          "point": "GB7"
+        },
+        "crashed": true,
+        "replayed": 29,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 13,
+        "at": {
+          "workerStage": "receive",
+          "workerFault": "before_commit"
+        },
+        "crashed": true,
+        "replayed": 22,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 14,
+        "at": {
+          "workerStage": "receive",
+          "workerFault": "after_commit_before_ack"
+        },
+        "crashed": true,
+        "replayed": 60,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 15,
+        "at": {
+          "workerStage": "apply",
+          "workerFault": "before_commit"
+        },
+        "crashed": true,
+        "replayed": 55,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "i": 16,
+        "at": {
+          "workerStage": "apply",
+          "workerFault": "after_commit_before_ack"
+        },
+        "crashed": true,
+        "replayed": 0,
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      }
+    ]
+  },
+  "CR2": {
+    "dir": "/var/folders/q0/s42qbvf90xs6zs3ryn6y8sfr0000gn/T/nova-cr2-D064ou",
+    "workerKills": 10,
+    "workerRestarts": 10,
+    "recoveredBatches": 0,
+    "progressExpected": 11200,
+    "progressActual": 11200,
+    "progressExact": true,
+    "giftsEmitted": 3736,
+    "giftsMissingInDb": 0,
+    "I1": true,
+    "I2": true,
+    "I3": true,
+    "I9": true
+  },
+  "CR1": {
+    "dir": "/var/folders/q0/s42qbvf90xs6zs3ryn6y8sfr0000gn/T/nova-cr1-HdPx6N",
+    "kills": 50,
+    "errors": 0,
+    "allI1": true,
+    "allI2": true,
+    "allI3": true,
+    "allI9": true,
+    "lostGiftsPerKill": {
+      "p50": 15,
+      "p95": 31,
+      "max": 42,
+      "total": 866
+    },
+    "lostAgeMs": {
+      "p50": 26,
+      "p95": 50,
+      "max": 55
+    },
+    "rtoMs": {
+      "p50": 119,
+      "p95": 169,
+      "max": 177
+    },
+    "alarmVsActual": [
+      {
+        "alarm": 19,
+        "actual": 16
+      },
+      {
+        "alarm": 19,
+        "actual": 23
+      },
+      {
+        "alarm": 13,
+        "actual": 10
+      },
+      {
+        "alarm": 9,
+        "actual": 15
+      },
+      {
+        "alarm": 25,
+        "actual": 14
+      },
+      {
+        "alarm": 27,
+        "actual": 13
+      },
+      {
+        "alarm": 36,
+        "actual": 14
+      },
+      {
+        "alarm": 12,
+        "actual": 28
+      },
+      {
+        "alarm": 30,
+        "actual": 42
+      },
+      {
+        "alarm": 22,
+        "actual": 15
+      },
+      {
+        "alarm": 17,
+        "actual": 20
+      },
+      {
+        "alarm": 18,
+        "actual": 33
+      },
+      {
+        "alarm": 13,
+        "actual": 17
+      },
+      {
+        "alarm": 10,
+        "actual": 11
+      },
+      {
+        "alarm": 10,
+        "actual": 20
+      },
+      {
+        "alarm": 42,
+        "actual": 11
+      },
+      {
+        "alarm": 17,
+        "actual": 18
+      },
+      {
+        "alarm": 9,
+        "actual": 16
+      },
+      {
+        "alarm": 21,
+        "actual": 10
+      },
+      {
+        "alarm": 18,
+        "actual": 12
+      },
+      {
+        "alarm": 13,
+        "actual": 10
+      },
+      {
+        "alarm": 28,
+        "actual": 14
+      },
+      {
+        "alarm": 27,
+        "actual": 31
+      },
+      {
+        "alarm": 11,
+        "actual": 11
+      },
+      {
+        "alarm": 10,
+        "actual": 15
+      },
+      {
+        "alarm": 19,
+        "actual": 11
+      },
+      {
+        "alarm": 20,
+        "actual": 11
+      },
+      {
+        "alarm": 16,
+        "actual": 25
+      },
+      {
+        "alarm": 19,
+        "actual": 14
+      },
+      {
+        "alarm": 37,
+        "actual": 18
+      },
+      {
+        "alarm": 15,
+        "actual": 15
+      },
+      {
+        "alarm": 24,
+        "actual": 18
+      },
+      {
+        "alarm": 18,
+        "actual": 14
+      },
+      {
+        "alarm": 30,
+        "actual": 13
+      },
+      {
+        "alarm": 15,
+        "actual": 26
+      },
+      {
+        "alarm": 10,
+        "actual": 12
+      },
+      {
+        "alarm": 15,
+        "actual": 23
+      },
+      {
+        "alarm": 16,
+        "actual": 23
+      },
+      {
+        "alarm": 10,
+        "actual": 20
+      },
+      {
+        "alarm": 10,
+        "actual": 15
+      },
+      {
+        "alarm": 14,
+        "actual": 13
+      },
+      {
+        "alarm": 25,
+        "actual": 26
+      },
+      {
+        "alarm": 11,
+        "actual": 11
+      },
+      {
+        "alarm": 20,
+        "actual": 25
+      },
+      {
+        "alarm": 11,
+        "actual": 10
+      },
+      {
+        "alarm": 38,
+        "actual": 11
+      },
+      {
+        "alarm": 16,
+        "actual": 21
+      },
+      {
+        "alarm": 32,
+        "actual": 14
+      },
+      {
+        "alarm": 13,
+        "actual": 27
+      },
+      {
+        "alarm": 10,
+        "actual": 11
+      }
+    ],
+    "cycles": [
+      {
+        "k": 1,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 33,
+        "replayedAfterKill": 0,
+        "lostGifts": 16,
+        "lostAgeMsMax": 16,
+        "alarmAtKill": {
+          "count": 19,
+          "oldestAgeMs": 31
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 2,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 98,
+        "replayedAfterKill": 26,
+        "lostGifts": 23,
+        "lostAgeMsMax": 38,
+        "alarmAtKill": {
+          "count": 19,
+          "oldestAgeMs": 30
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 3,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 91,
+        "replayedAfterKill": 28,
+        "lostGifts": 10,
+        "lostAgeMsMax": 7,
+        "alarmAtKill": {
+          "count": 13,
+          "oldestAgeMs": 31
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 4,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 52,
+        "replayedAfterKill": 0,
+        "lostGifts": 15,
+        "lostAgeMsMax": 41,
+        "alarmAtKill": {
+          "count": 9,
+          "oldestAgeMs": 5
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 5,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 104,
+        "replayedAfterKill": 25,
+        "lostGifts": 14,
+        "lostAgeMsMax": 19,
+        "alarmAtKill": {
+          "count": 25,
+          "oldestAgeMs": 51
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 6,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 106,
+        "replayedAfterKill": 28,
+        "lostGifts": 13,
+        "lostAgeMsMax": 18,
+        "alarmAtKill": {
+          "count": 27,
+          "oldestAgeMs": 47
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 7,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 49,
+        "replayedAfterKill": 0,
+        "lostGifts": 14,
+        "lostAgeMsMax": 11,
+        "alarmAtKill": {
+          "count": 36,
+          "oldestAgeMs": 56
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 8,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 109,
+        "replayedAfterKill": 27,
+        "lostGifts": 28,
+        "lostAgeMsMax": 47,
+        "alarmAtKill": {
+          "count": 12,
+          "oldestAgeMs": 18
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 9,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 112,
+        "replayedAfterKill": 30,
+        "lostGifts": 42,
+        "lostAgeMsMax": 55,
+        "alarmAtKill": {
+          "count": 30,
+          "oldestAgeMs": 45
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 10,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 119,
+        "replayedAfterKill": 26,
+        "lostGifts": 15,
+        "lostAgeMsMax": 35,
+        "alarmAtKill": {
+          "count": 22,
+          "oldestAgeMs": 44
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 11,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 117,
+        "replayedAfterKill": 24,
+        "lostGifts": 20,
+        "lostAgeMsMax": 35,
+        "alarmAtKill": {
+          "count": 17,
+          "oldestAgeMs": 33
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 12,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 121,
+        "replayedAfterKill": 27,
+        "lostGifts": 33,
+        "lostAgeMsMax": 47,
+        "alarmAtKill": {
+          "count": 18,
+          "oldestAgeMs": 32
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 13,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 64,
+        "replayedAfterKill": 0,
+        "lostGifts": 17,
+        "lostAgeMsMax": 24,
+        "alarmAtKill": {
+          "count": 13,
+          "oldestAgeMs": 11
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 14,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 122,
+        "replayedAfterKill": 46,
+        "lostGifts": 11,
+        "lostAgeMsMax": 17,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 3
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 15,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 70,
+        "replayedAfterKill": 0,
+        "lostGifts": 20,
+        "lostAgeMsMax": 36,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 2
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 16,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 129,
+        "replayedAfterKill": 37,
+        "lostGifts": 11,
+        "lostAgeMsMax": 19,
+        "alarmAtKill": {
+          "count": 42,
+          "oldestAgeMs": 53
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 17,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 73,
+        "replayedAfterKill": 0,
+        "lostGifts": 18,
+        "lostAgeMsMax": 43,
+        "alarmAtKill": {
+          "count": 17,
+          "oldestAgeMs": 37
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 18,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 75,
+        "replayedAfterKill": 0,
+        "lostGifts": 16,
+        "lostAgeMsMax": 33,
+        "alarmAtKill": {
+          "count": 9,
+          "oldestAgeMs": 4
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 19,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 75,
+        "replayedAfterKill": 0,
+        "lostGifts": 10,
+        "lostAgeMsMax": 16,
+        "alarmAtKill": {
+          "count": 21,
+          "oldestAgeMs": 39
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 20,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 131,
+        "replayedAfterKill": 30,
+        "lostGifts": 12,
+        "lostAgeMsMax": 17,
+        "alarmAtKill": {
+          "count": 18,
+          "oldestAgeMs": 22
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 21,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 133,
+        "replayedAfterKill": 33,
+        "lostGifts": 10,
+        "lostAgeMsMax": 4,
+        "alarmAtKill": {
+          "count": 13,
+          "oldestAgeMs": 8
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 22,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 110,
+        "replayedAfterKill": 33,
+        "lostGifts": 14,
+        "lostAgeMsMax": 22,
+        "alarmAtKill": {
+          "count": 28,
+          "oldestAgeMs": 49
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 23,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 81,
+        "replayedAfterKill": 0,
+        "lostGifts": 31,
+        "lostAgeMsMax": 50,
+        "alarmAtKill": {
+          "count": 27,
+          "oldestAgeMs": 48
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 24,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 150,
+        "replayedAfterKill": 29,
+        "lostGifts": 11,
+        "lostAgeMsMax": 22,
+        "alarmAtKill": {
+          "count": 11,
+          "oldestAgeMs": 17
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 25,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 138,
+        "replayedAfterKill": 30,
+        "lostGifts": 15,
+        "lostAgeMsMax": 23,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 8
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 26,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 155,
+        "replayedAfterKill": 61,
+        "lostGifts": 11,
+        "lostAgeMsMax": 3,
+        "alarmAtKill": {
+          "count": 19,
+          "oldestAgeMs": 37
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 27,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 145,
+        "replayedAfterKill": 30,
+        "lostGifts": 11,
+        "lostAgeMsMax": 15,
+        "alarmAtKill": {
+          "count": 20,
+          "oldestAgeMs": 32
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 28,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 145,
+        "replayedAfterKill": 28,
+        "lostGifts": 25,
+        "lostAgeMsMax": 45,
+        "alarmAtKill": {
+          "count": 16,
+          "oldestAgeMs": 26
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 29,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 147,
+        "replayedAfterKill": 55,
+        "lostGifts": 14,
+        "lostAgeMsMax": 12,
+        "alarmAtKill": {
+          "count": 19,
+          "oldestAgeMs": 39
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 30,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 85,
+        "replayedAfterKill": 0,
+        "lostGifts": 18,
+        "lostAgeMsMax": 32,
+        "alarmAtKill": {
+          "count": 37,
+          "oldestAgeMs": 61
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 31,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 81,
+        "replayedAfterKill": 0,
+        "lostGifts": 15,
+        "lostAgeMsMax": 20,
+        "alarmAtKill": {
+          "count": 15,
+          "oldestAgeMs": 26
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 32,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 146,
+        "replayedAfterKill": 24,
+        "lostGifts": 18,
+        "lostAgeMsMax": 38,
+        "alarmAtKill": {
+          "count": 24,
+          "oldestAgeMs": 49
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 33,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 87,
+        "replayedAfterKill": 0,
+        "lostGifts": 14,
+        "lostAgeMsMax": 20,
+        "alarmAtKill": {
+          "count": 18,
+          "oldestAgeMs": 34
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 34,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 96,
+        "replayedAfterKill": 0,
+        "lostGifts": 13,
+        "lostAgeMsMax": 30,
+        "alarmAtKill": {
+          "count": 30,
+          "oldestAgeMs": 56
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 35,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 164,
+        "replayedAfterKill": 26,
+        "lostGifts": 26,
+        "lostAgeMsMax": 49,
+        "alarmAtKill": {
+          "count": 15,
+          "oldestAgeMs": 29
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 36,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 94,
+        "replayedAfterKill": 0,
+        "lostGifts": 12,
+        "lostAgeMsMax": 12,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 2
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 37,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 103,
+        "replayedAfterKill": 0,
+        "lostGifts": 23,
+        "lostAgeMsMax": 49,
+        "alarmAtKill": {
+          "count": 15,
+          "oldestAgeMs": 26
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 38,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 169,
+        "replayedAfterKill": 25,
+        "lostGifts": 23,
+        "lostAgeMsMax": 35,
+        "alarmAtKill": {
+          "count": 16,
+          "oldestAgeMs": 15
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 39,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 160,
+        "replayedAfterKill": 29,
+        "lostGifts": 20,
+        "lostAgeMsMax": 26,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 3
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 40,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 163,
+        "replayedAfterKill": 31,
+        "lostGifts": 15,
+        "lostAgeMsMax": 29,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 6
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 41,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 153,
+        "replayedAfterKill": 24,
+        "lostGifts": 13,
+        "lostAgeMsMax": 19,
+        "alarmAtKill": {
+          "count": 14,
+          "oldestAgeMs": 30
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 42,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 168,
+        "replayedAfterKill": 31,
+        "lostGifts": 26,
+        "lostAgeMsMax": 52,
+        "alarmAtKill": {
+          "count": 25,
+          "oldestAgeMs": 51
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 43,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 177,
+        "replayedAfterKill": 30,
+        "lostGifts": 11,
+        "lostAgeMsMax": 10,
+        "alarmAtKill": {
+          "count": 11,
+          "oldestAgeMs": 8
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 44,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 110,
+        "replayedAfterKill": 0,
+        "lostGifts": 25,
+        "lostAgeMsMax": 45,
+        "alarmAtKill": {
+          "count": 20,
+          "oldestAgeMs": 30
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 45,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 110,
+        "replayedAfterKill": 0,
+        "lostGifts": 10,
+        "lostAgeMsMax": 24,
+        "alarmAtKill": {
+          "count": 11,
+          "oldestAgeMs": 23
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 46,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 169,
+        "replayedAfterKill": 27,
+        "lostGifts": 11,
+        "lostAgeMsMax": 21,
+        "alarmAtKill": {
+          "count": 38,
+          "oldestAgeMs": 53
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 47,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 125,
+        "replayedAfterKill": 0,
+        "lostGifts": 21,
+        "lostAgeMsMax": 43,
+        "alarmAtKill": {
+          "count": 16,
+          "oldestAgeMs": 35
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 48,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 165,
+        "replayedAfterKill": 25,
+        "lostGifts": 14,
+        "lostAgeMsMax": 32,
+        "alarmAtKill": {
+          "count": 32,
+          "oldestAgeMs": 56
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 49,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 171,
+        "replayedAfterKill": 26,
+        "lostGifts": 27,
+        "lostAgeMsMax": 47,
+        "alarmAtKill": {
+          "count": 13,
+          "oldestAgeMs": 23
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      },
+      {
+        "k": 50,
+        "childRestoreMs": 0,
+        "childReplayedAtStart": 0,
+        "recoveryRtoMs": 164,
+        "replayedAfterKill": 28,
+        "lostGifts": 11,
+        "lostAgeMsMax": 16,
+        "alarmAtKill": {
+          "count": 10,
+          "oldestAgeMs": 12
+        },
+        "I1": true,
+        "I2": true,
+        "I3": true,
+        "I9": true
+      }
+    ]
+  }
+}

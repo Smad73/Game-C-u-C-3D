@@ -1,0 +1,8 @@
+# ADR-0006: Đường ống sự kiện chịu tải (dedupe, rate limit, hàng đợi ưu tiên, journal quà)
+- Ngày: 2026-11-24 — Sửa: 2026-11-24 (0.0.8 theo R02/R05: làm rõ phạm vi bảo đảm, backpressure — ADR-0018, ADR-0019) — Trạng thái: Đề xuất
+- Bối cảnh: LIVE đông có thể có hàng nghìn comment/quà mỗi giây; quà là tiền thật của người xem — mục tiêu: không cộng hai lần và không bỏ sót quà đã ghi bền (phạm vi bảo đảm chính xác ở ADR-0018; **không** tuyên bố exactly-once).
+- Quyết định: Ingest → Normalizer → Dedupe (LRU+TTL + `UNIQUE` DB; streak chỉ cộng phần tăng) → RateLimiter token bucket (mỗi người + toàn cục) → GiftJournal (ghi RECEIVED trước) → EventBus → PriorityEventQueue có giới hạn (P0 hệ thống, P1 quà, P2 tham gia, P3 lệnh, P4 like/share gộp) → GameCore xử lý theo lô, ngân sách ms/tick.
+- Chính sách tràn: P4 gộp/lấy mẫu có đếm; P3 giảm tần suất; P2 chỉ trễ, không bỏ; P1 (quà) **không bị chủ động bỏ khi còn khả năng lưu trữ** — quà được ghi `RECEIVED` bền trước khi áp dụng (ADR-0018); hết nơi lưu trữ → ngừng tiếp nhận có kiểm soát (ADR-0019 R11, 0.0.9); quà chưa kịp ghi bền khi tiến trình chết có thể mất (ADR-0018 G3). Backpressure, cảnh báo, lỗi lưu trữ: ADR-0019.
+- Lý do: bảo vệ vòng lặp game và FPS; chống spam; đảm bảo toàn vẹn quà kể cả khi restart.
+- Phương án đã loại: xử lý đồng bộ từng sự kiện ngay khi nhận; bỏ quà khi quá tải.
+- Hệ quả: cần Metrics (độ sâu hàng đợi, sự kiện/s, gộp/bỏ, trễ p95) và LoadGenerator; tiêu chí Phase 2: 1.000 comment/s + 200 quà/s — 0 quà áp dụng hai lần (I1), mọi quà đã `RECEIVED` kết thúc APPLIED/REJECTED/DEAD (I2), đếm và báo cáo số quà nhận từ connector so với số đã ghi `RECEIVED` (ADR-0022).

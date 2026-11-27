@@ -1,0 +1,13 @@
+# ADR-0012: Vòng đời buổi LIVE (định danh theo sự kiện thật) & tắt game an toàn
+- Ngày: 2026-11-24 — Sửa: 2026-11-24 (0.0.4, theo quyết định định danh LIVE của ChatGPT; 0.0.8: luồng tắt qua PersistenceWorker, làm rõ bảo đảm quà) — Trạng thái: Quy tắc **đã chốt**; triển khai chờ duyệt
+- Quy tắc đã chốt: buổi LIVE xác định bằng sự kiện bắt đầu và kết thúc thực tế · mất kết nối tạm thời không tạo buổi mới · có phục hồi khi connector khởi động lại · chỉ reset TOP LIVE khi xác nhận buổi LIVE mới · kết thúc LIVE phải lưu trạng thái và kết quả trước khi đóng game · (luật NOVA) LIVE kết thúc thì tự ngắt, không tự nối lại/poll.
+- Quyết định triển khai:
+  1. `live_sessions`: room_id (UNIQUE ngoài DEMO), status ACTIVE/RECOVERING/ENDED, end_reason STREAM_END/MANUAL/INFERRED, last_event_at.
+  2. **Bắt đầu thực tế** = kết nối thành công vào phòng đang phát có room_id chưa từng gắn buổi nào → buổi mới = xác nhận → chốt TOP LIVE cũ, mở TOP LIVE mới.
+  3. **Kết thúc thực tế** = `streamEnd` (STREAM_END) hoặc nút "Kết thúc LIVE" (MANUAL).
+  4. **Gián đoạn tạm thời** (rớt mạng, connector/server khởi động lại): buổi ACTIVE → RECOVERING; nối lại cùng room_id → ACTIVE, TOP LIVE giữ nguyên; room_id khác → đóng buổi cũ INFERRED (ended_at = last_event_at) rồi tạo buổi mới; không kết nối được → giữ RECOVERING, không poll, chờ người vận hành.
+  5. Không có room_id đáng tin (DEMO/thư viện lỗi) → chỉ tạo buổi mới bằng nút trên Control có `confirm`.
+  6. **Luồng kết thúc** (streamEnd, MANUAL, tín hiệu tắt — macOS: SIGINT/SIGTERM/SIGHUP; Windows: SIGINT (Ctrl+C), SIGBREAK, SIGHUP (đóng cửa sổ console, chỉ có vài giây) — nên nút "Thoát an toàn" trên Control là đường chính trên cả hai OS): ngừng nhận → xả hàng đợi (trần 10 s) → giải quyết cú câu dở → mọi người sang COLD → flush DB một giao dịch → chốt TOP LIVE + tổng kết buổi → `STOPPED` → báo "Đã lưu" → mới thoát. Quà đã ghi `RECEIVED` nhưng chưa APPLIED ở lại journal, áp dụng lần sau (ADR-0018). Bước flush = gửi lệnh dừng cho PersistenceWorker và chờ ack (ADR-0017); quá trần thời gian (Windows đóng console chỉ cho vài giây) thì phần chưa ack thuộc RPO ở ADR-0022. SIGINT/SIGTERM khi LIVE vẫn phát → lưu an toàn nhưng buổi để RECOVERING (không phải kết thúc thực tế).
+  7. Giả định cần kiểm chứng ở Phase 2: room_id giữ nguyên qua các lần nối lại trong cùng một lần phát và đổi khi phát lần mới. Nếu sai → dùng nút xác nhận trên Control làm đường chính, ghi sổ bài học.
+- Phương án đã loại: reset TOP LIVE mỗi lần kết nối; reset theo giờ cố định; tự đồng ý buổi mới sau 30 s (bản 0.0.3).
+- Hệ quả: `src/shutdown.js` có từ Phase 1; test giả lập streamEnd, rớt mạng, restart connector, restart server, Ctrl+C, kill giữa chừng; Control hiển thị trạng thái buổi và trạng thái lưu.

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>NOVA FISHING LIVE 3D — Kiểm tra màn hình phát</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="check.css">
+</head>
+<body>
+  <!-- Khung cố định 1080×1920 (dọc). Trong OBS: đặt Browser Source đúng 1080×1920 thì tỉ lệ = 1. -->
+  <div id="frame">
+    <canvas id="gl" width="1080" height="1920"></canvas>
+
+    <!-- Vùng TikTok: 1/3 dưới và mép phải dành cho bình luận/nút (UI_UX_RULES). Chỉ là đường kẻ hướng dẫn, tắt bằng ?guides=0 -->
+    <div id="guides" hidden>
+      <div class="guide guide-bottom"><span>VÙNG BÌNH LUẬN TIKTOK (1/3 dưới)</span></div>
+      <div class="guide guide-right"><span>NÚT</span></div>
+    </div>
+
+    <main id="panel">
+      <h1>NOVA FISHING LIVE 3D</h1>
+      <p class="sub">Kiểm tra màn hình phát — Phase 1 (chưa phải cảnh game)</p>
+      <div id="verdict" class="verdict wait">ĐANG KIỂM TRA…</div>
+      <table>
+        <tr><th>WebGL2</th><td id="r-webgl2">…</td></tr>
+        <tr><th>Card đồ hoạ</th><td id="r-renderer">…</td></tr>
+        <tr><th>Three.js</th><td id="r-three">…</td></tr>
+        <tr><th>Canvas</th><td id="r-canvas">…</td></tr>
+        <tr><th>Cửa sổ</th><td id="r-viewport">…</td></tr>
+        <tr><th>FPS</th><td id="r-fps">…</td></tr>
+        <tr><th>WebSocket</th><td id="r-ws">…</td></tr>
+        <tr><th>Âm thanh</th><td id="r-audio">…</td></tr>
+        <tr><th>Chữ tiếng Việt</th><td id="r-font">…</td></tr>
+        <tr><th>Trình duyệt</th><td id="r-ua" class="small">…</td></tr>
+      </table>
+      <p id="viet" class="viet">Câu cá — Cần thủ Nguyễn Văn Ắ, Trần Thị Ằ, Lê Ưu Ỡ, Phạm Ngô Ỵ</p>
+      <button id="beep" type="button">Phát âm thử (kiểm tra OBS có nghe/ thấy mức âm)</button>
+    </main>
+  </div>
+  <script type="module" src="check.js"></script>
+</body>
+</html>

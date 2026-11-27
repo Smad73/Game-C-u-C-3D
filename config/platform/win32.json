@@ -1,0 +1,12 @@
+{
+  "platform": {
+    "id": "win32",
+    "label": "Windows"
+  },
+  "graphics": {
+    "defaultPreset": "medium"
+  },
+  "launcher": {
+    "openBrowserOnStart": true
+  }
+}

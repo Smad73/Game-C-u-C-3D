@@ -1,0 +1,6 @@
+NHẠC NỀN — chép tệp nhạc vào thư mục này (mp3, m4a, aac, ogg, wav, flac), rồi vào Control → Cài đặt → Nhạc nền → chọn "Tệp trên máy".
+
+Chỉ dùng nhạc bạn CÓ QUYỀN phát trên LIVE, ví dụ:
+ - Nhạc miễn phí bản quyền tải từ YouTube Studio → Thư viện âm thanh (Audio Library), hoặc
+ - Nhạc bạn tự sáng tác / đã mua giấy phép phát trực tuyến.
+Nhạc có bản quyền có thể khiến TikTok tắt tiếng hoặc dừng buổi LIVE.
